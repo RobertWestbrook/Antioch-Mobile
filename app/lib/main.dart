@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/screens.dart';
+// import 'screens/screens.dart';
+import 'package:Antioch_App/shared/navigation.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,15 +8,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        // '/': (context) => LoginScreen(),
-        '/': (context) => HomeScreen()
+        '/': (context) => NavBar(),
       },
-
 
       theme: ThemeData(
         brightness: Brightness.dark,
         backgroundColor: Colors.black,
       ),
+      
     );
   }
 }

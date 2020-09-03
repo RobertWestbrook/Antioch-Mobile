@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "129454528260",
+    "firebase_url": "https://antioch-mobile.firebaseio.com",
+    "project_id": "antioch-mobile",
+    "storage_bucket": "antioch-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129454528260:android:becb9b3e1c32f1d04d2251",
+        "android_client_info": {
+          "package_name": "com.Antioch.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129454528260-2b7vp8tmf4nms4rcuuir6jhhu6od6a2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Antioch.mobile",
+            "certificate_hash": "38b2c39d876b03a493771e2208c708b006cc6813"
+          }
+        },
+        {
+          "client_id": "129454528260-vfcsns3t5dq5kq5gpchm2ktcqpsmt3ha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqAVyE0_TObn_4HL6QMI-EZSR9wUk_auc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129454528260-vfcsns3t5dq5kq5gpchm2ktcqpsmt3ha.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "129454528260-agdhce1e488i3pva6jnj585fbacdgi7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Antioch.Mobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
