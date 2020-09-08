@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:Antioch_App/shared/navigation.dart';
+import 'package:flutter/rendering.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 //_______________Base Screen Template ________________//
 
@@ -12,37 +13,39 @@ class BaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
+    return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          leading: new Container(),
+          leading: Container(),
           centerTitle: true,
-          title: Text(title, textAlign: TextAlign.center),
-          backgroundColor: Colors.transparent,
+          title: title,
+          backgroundColor: Colors.black,
         ),
         body: Stack(
           children: [
             Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
                 margin: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/LogoWhite.png'),
-                      fit: BoxFit.fitWidth))),
+                        image: AssetImage('assets/images/logo.png'),
+                        fit: BoxFit.fitWidth))),
             Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: FractionalOffset.topLeft,
-                  end: FractionalOffset.bottomCenter,
-                  colors: [
-                    Colors.grey[800].withOpacity(.9), Colors.grey[900].withOpacity(.8),
-                  ]
-                )
-              ),
+                  // color: Colors.white
+                  gradient: LinearGradient(
+                      begin: FractionalOffset.topLeft,
+                      end: FractionalOffset.bottomCenter,
+                      colors: [
+                    Colors.grey[700].withOpacity(.9),
+                    Colors.grey[900].withOpacity(.2),
+                  ])),
             ),
             Container(
               child: body,
-              )
+            )
           ],
         ),
         // bottomNavigationBar: NavBar(),
@@ -54,23 +57,124 @@ class BaseScreen extends StatelessWidget {
 //________________________________________________________//
 
 //__________________Home Buttons__________________________//
+class HomeButton extends StatelessWidget {
+  final image;
+  final url;
+  final label;
 
-class HomeButton extends StatelessWidget{
+  HomeButton({this.image, this.url, this.label});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-            child: MaterialButton(onPressed: (){},
-            height: 100,
-            color: Colors.blueGrey[500].withOpacity(.5),
-            elevation: 20,
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Ink.image(
+          fit: BoxFit.fitHeight,
+          height: MediaQuery.of(context).size.height / 15,
+          image: AssetImage(image),
+          child: InkWell(
+            onTap: () {
+              launchURL(url);
+            },
+          )),
+    ]);
+  }
+}
 
+//__________________Home Button Area_____________________//
 
-      ),
-        ),
+class HomeButtonArea extends StatelessWidget {
+  final image;
+  final title;
+  final child;
+
+  HomeButtonArea({this.image, this.title, this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          SliverAppBar(
+            pinned: true,
+            leading: HomeButton(
+              image: image,
+            ),
+            title: Text(
+              title,
+              textScaleFactor: 2,
+              textAlign: TextAlign.end,
+            ),
+            expandedHeight: MediaQuery.of(context).size.height / 20,
+            forceElevated: innerBoxIsScrolled,
+          ),
+        ];
+      },
+      body: SingleChildScrollView(child: child),
     );
+  }
+}
+
+//__________________Cards_______________________________//
+
+class HomeCard extends StatelessWidget {
+  final image;
+  final text;
+  final url;
+  final height;
+  final width;
+  final fitStyle;
+  HomeCard({this.image, this.text, this.url, this.height, this.width, this.fitStyle = BoxFit.fitWidth});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      InkWell(
+          onTap: () {launchURL(url);},
+          child: Container(
+            margin: EdgeInsets.fromLTRB(5,10,5,10),
+            height: height, 
+            width: width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              image: DecorationImage(
+                  colorFilter:
+                      ColorFilter.mode(Colors.grey, BlendMode.softLight),
+                  fit: fitStyle,
+                  image: AssetImage(image)),
+            ),
+            child: Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    text,
+                    textScaleFactor: 4,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      shadows: <Shadow>[
+                        Shadow(
+                          offset: Offset(-5.0, 5.0),
+                          blurRadius: 10.0,
+                          color: Colors.blueGrey[800]),
+                        Shadow(
+                          offset: Offset(-5.0, 5.0),
+                          blurRadius: 200.0,
+                          color: Colors.blueGrey[400]),
+                      ],
+                    ),
+                  ),
+                )),
+          )),
+    ]);
+  }
+}
+
+//__________________Methods_______________________________//
+
+launchURL(url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
