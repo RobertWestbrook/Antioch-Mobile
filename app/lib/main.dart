@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'screens/screens.dart';
 import 'package:Antioch_App/shared/navigation.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -19,8 +20,18 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.blueGrey
-      ),
+        primarySwatch: Colors.blueGrey,
+        primaryColor: Color.fromRGBO(35, 35, 35, 1),
+        textTheme: GoogleFonts.montserratTextTheme(
+          TextTheme(
+            bodyText1: TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color: Colors.white),
+            bodyText2: TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color: Colors.white),
+            subtitle1: TextStyle(fontSize: 18, fontWeight: FontWeight.w300, color: Colors.white),
+
+          )
+          )
+
+        )
       
     );
   }

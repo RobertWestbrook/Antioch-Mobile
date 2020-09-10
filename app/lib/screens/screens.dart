@@ -2,3 +2,8 @@ export 'events.dart';
 export 'HomeScreen/home.dart';
 export 'notification.dart';
 export 'giving.dart';
+export 'HomeScreen/missions.dart';
+export 'HomeScreen/family.dart';
+export 'HomeScreen/serve.dart';
+export 'HomeScreen/jesus.dart';
+export 'HomeScreen/discipleship.dart';

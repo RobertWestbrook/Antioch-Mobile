@@ -29,7 +29,7 @@ class _NavBarState extends State<NavBar> {
     return Scaffold(
         body: _routes[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(30, 30, 30, 1),
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
 

@@ -9,14 +9,14 @@ class Notifications extends StatelessWidget{
       title: Text('Messages'),
       body: Center(
         child: RaisedButton(
-                      color: Colors.blueGrey.withOpacity(.6),
-                      elevation: 5,
-                      padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
-                      onPressed: (){launchURL('https://www.antiochorlando.com/events');},
-                      child: Text('Notifications',
-                        textScaleFactor: 2,
-                      ),
-                    )
+          color: Colors.blueGrey.withOpacity(.6),
+          elevation: 5,
+          padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
+          onPressed: (){launchURL('https://www.antiochorlando.com/events');},
+          child: Text('Notifications',
+            textScaleFactor: 2,
+          ),
+        )
       ),
     );
   }

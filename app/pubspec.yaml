@@ -17,6 +17,7 @@ dependencies:
   url_launcher: ^5.5.2
   vector_math: ^2.0.8
   # google_sign_in: 4.4.1
+  google_fonts: ^1.1.0
   apple_sign_in: 0.1.0
 
   rxdart: 0.23.1
@@ -32,3 +33,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - google_fonts/
