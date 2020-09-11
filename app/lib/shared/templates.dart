@@ -19,10 +19,8 @@ class BaseScreen extends StatelessWidget {
       onWillPop: () async => true,
       child: Scaffold(
         appBar: AppBar(
-          // leading: Container(),
           centerTitle: true,
           title: title,
-          // backgroundColor: Colors.black,
         ),
         body: Stack(
           children: [
@@ -50,13 +48,13 @@ class BaseScreen extends StatelessWidget {
             )
           ],
         ),
-        // bottomNavigationBar: NavBar(),
       ),
     );
   }
 }
 
 //__________________Home Buttons__________________________//
+
 class HomeButton extends StatelessWidget {
   final image;
   final url;
@@ -85,34 +83,66 @@ class HomeButton extends StatelessWidget {
 class HomeButtonArea extends StatelessWidget {
   final image;
   final title;
+  final spot;
   final child;
 
-  HomeButtonArea({this.image, this.title, this.child});
+  HomeButtonArea({this.image, this.title, this.child, this.spot});
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-        return <Widget>[
-          SliverAppBar(
-            floating: false,
-            flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-              title,
-              textScaleFactor: 2,
-              textAlign: TextAlign.end,
-            )),
-            backgroundColor: Color.fromRGBO(30, 30, 30, 1),
-            pinned: false,
-            leading: HomeButton(image: image),
-            collapsedHeight: MediaQuery.of(context).size.height / 12,
-            expandedHeight: MediaQuery.of(context).size.height / 5,
-            forceElevated: innerBoxIsScrolled,
+    // return NestedScrollView(
+    //   scrollDirection: Axis.horizontal,
+    //   headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+    //     return <Widget>[
+    //       SliverAppBar(
+    //         floating: false,
+    //           title: Text(title,
+    //               textScaleFactor: 2,
+    //               textAlign: TextAlign.end,
+    //               ),
+    //         backgroundColor: Color.fromRGBO(30, 30, 30, 0),
+    //         pinned: true,
+    //         forceElevated: innerBoxIsScrolled,
+    //       ),
+    //     ];
+    //   },
+    //   body: 
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                textScaleFactor: 3,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    shadows: <Shadow>[
+                      Shadow(
+                          offset: Offset(-5.0, 5.0),
+                          blurRadius: 10.0,
+                          color: Colors.blueGrey[800]),
+                      Shadow(
+                          offset: Offset(-5.0, 5.0),
+                          blurRadius: 200.0,
+                          color: Colors.blueGrey[400]),
+                    ],
+              )),
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: Image.asset(image, scale: 5,)),
+            ],
           ),
-        ];
-      },
-      body: SingleChildScrollView(child: child),
-    );
+        ),
+        spot,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: child,
+        )],
+      );
   }
 }
 
@@ -121,32 +151,36 @@ class HomeButtonArea extends StatelessWidget {
 class HomeCardURL extends StatelessWidget {
   final image;
   final text;
+  final double textSize;
   final url;
   final height;
   final width;
   final fitStyle;
+  final align;
 
   HomeCardURL(
-      {this.image,
-      this.text,
-      this.url,
-      this.height,
-      this.width,
-      this.fitStyle = BoxFit.fitWidth});
+    {this.image,
+    this.text,
+    this.textSize = 3,
+    this.url,
+    this.height,
+    this.width,
+    this.fitStyle = BoxFit.fitWidth,
+    this.align = Alignment.bottomCenter});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Column(children: [
       InkWell(
           onTap: () {
             launchURL(url);
           },
           child: Container(
-            margin: EdgeInsets.fromLTRB(5, 20, 5, 20),
+            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
             height: height,
             width: width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                   colorFilter:
                       ColorFilter.mode(Colors.grey, BlendMode.softLight),
@@ -154,12 +188,12 @@ class HomeCardURL extends StatelessWidget {
                   image: AssetImage(image)),
             ),
             child: Align(
-                alignment: Alignment.bottomRight,
+                alignment: align,
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
                     text,
-                    textScaleFactor: 4,
+                    textScaleFactor: textSize,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       shadows: <Shadow>[
@@ -205,11 +239,11 @@ class HomeCardNat extends StatelessWidget {
                 context, MaterialPageRoute(builder: (context) => route));
           },
           child: Container(
-            margin: EdgeInsets.fromLTRB(5, 20, 5, 20),
+            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
             height: height,
             width: width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                   colorFilter:
                       ColorFilter.mode(Colors.grey, BlendMode.softLight),

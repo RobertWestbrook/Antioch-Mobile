@@ -8,20 +8,32 @@ class Mission extends StatelessWidget {
     return HomeButtonArea(
         title: 'Mission',
         image: 'assets/images/earth.png',
-        child: Column(
+        spot: HomeCardURL(
+                image: 'assets/images/japan.jpg',
+                text: 'Into \n All \n the Earth...',
+                url: 'https://www.antiochorlando.com/mission',
+                height: MediaQuery.of(context).size.height /2.7,
+                width: MediaQuery.of(context).size.width,
+                fitStyle: BoxFit.fitHeight,
+                align: Alignment.bottomLeft,
+            ),            
+        child: Row(
           children: [
             HomeCardNat(
-              image: 'assets/images/detroit.png',
-              text: '',
-              route: DetroitPop(),
-              height: MediaQuery.of(context).size.height / 3,
-              fitStyle: BoxFit.fitHeight,
-            ),
+                image: 'assets/images/detroit.png',
+                text: '',
+                route: DetroitPop(),
+              height: MediaQuery.of(context).size.height /4,
+              width: MediaQuery.of(context).size.width /1.4,
+                fitStyle: BoxFit.cover,
+            ),            
             HomeCardURL(
               image: 'assets/images/prayer.jpg',
               text: '',
               url: 'https://www.antiochorlando.com/prayer-room',
               height: MediaQuery.of(context).size.height / 4,
+              width: MediaQuery.of(context).size.width /1.4,
+              fitStyle: BoxFit.cover,
             )
           ],
         ));
@@ -35,7 +47,7 @@ class DetroitPop extends StatelessWidget {
       image: 'assets/images/detroit.png',
       title: 'Detroit',
       height: MediaQuery.of(context).size.height / 3,
-      fitStyle: BoxFit.fitWidth,
+      fitStyle: BoxFit.cover,
       child: Column(
         children: [
           PopUpListTile(
@@ -44,9 +56,14 @@ class DetroitPop extends StatelessWidget {
             ),
           ListTile(
               onTap: (){launchURL('https://www.antiochorlando.com/detroit');},
-              trailing: FaIcon(FontAwesomeIcons.cloud, color: Colors.blueAccent[400]),
+              trailing: FaIcon(FontAwesomeIcons.cloud, color: Colors.blueAccent[100]),
               title: Text('Get more info here...'),
               subtitle: Text("Website: www.antiochorlando.com/detroit"),
+            ),
+          ListTile(
+              onTap: (){launchURL('https://docs.google.com/forms/d/e/1FAIpQLScUo7NPROeftml3XtfdRV0UuZ-oNA9txsuXmVcMxCRX8qnMFg/viewform');},
+              trailing: FaIcon(FontAwesomeIcons.addressCard, color: Colors.blueAccent[50]),
+              title: Text('Register Now'),
             ),
         ],
       ),

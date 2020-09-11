@@ -10,7 +10,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-        title: Image.asset('assets/images/slogo.png',
+        title: Image.asset('assets/images/HeaderHD.png',
+            color: Colors.white,
             height: MediaQuery.of(context).size.height / 15),
         body: Material(
           type: MaterialType.transparency,
@@ -18,7 +19,7 @@ class Home extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: PageView(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
               children: [
                 Jesus(),
                 Discipleship(),

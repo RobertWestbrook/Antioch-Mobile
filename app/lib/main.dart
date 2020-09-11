@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
         brightness: Brightness.dark,
+        backgroundColor: Colors.white,
         primarySwatch: Colors.blueGrey,
         primaryColor: Color.fromRGBO(35, 35, 35, 1),
         textTheme: GoogleFonts.montserratTextTheme(
