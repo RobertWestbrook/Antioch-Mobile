@@ -7,14 +7,11 @@ class Serve extends StatelessWidget{
     return HomeButtonArea(
       title: 'Serve',
       image: 'assets/images/heart.png',
-      spot: HomeCardURL(
+      spot: SpotCard(
               image: 'assets/images/service2.JPG',
               text: 'Sunday \nService',
               url: 'https://www.antiochorlando.com/sunday-service',
-              height: MediaQuery.of(context).size.height /2.5,
-              width: MediaQuery.of(context).size.width,
               fitStyle: BoxFit.cover,
-              align: Alignment.bottomRight,
               textSize: 4,
           ),
       child: Column(
@@ -24,8 +21,6 @@ class Serve extends StatelessWidget{
             image: 'assets/images/serve.JPG',
             text: 'Want To Serve?',
             url: 'https://www.antiochorlando.com/Sunday-service',
-              height: MediaQuery.of(context).size.height /4,
-              width: MediaQuery.of(context).size.width /1.4,
             fitStyle: BoxFit.cover,
           )
         ],)

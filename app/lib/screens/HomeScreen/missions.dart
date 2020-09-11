@@ -8,12 +8,10 @@ class Mission extends StatelessWidget {
     return HomeButtonArea(
         title: 'Mission',
         image: 'assets/images/earth.png',
-        spot: HomeCardURL(
+        spot: SpotCard(
                 image: 'assets/images/japan.jpg',
                 text: 'Into \n All \n the Earth...',
                 url: 'https://www.antiochorlando.com/mission',
-                height: MediaQuery.of(context).size.height /2.7,
-                width: MediaQuery.of(context).size.width,
                 fitStyle: BoxFit.fitHeight,
                 align: Alignment.bottomLeft,
             ),            
@@ -23,16 +21,12 @@ class Mission extends StatelessWidget {
                 image: 'assets/images/detroit.png',
                 text: '',
                 route: DetroitPop(),
-              height: MediaQuery.of(context).size.height /4,
-              width: MediaQuery.of(context).size.width /1.4,
                 fitStyle: BoxFit.cover,
             ),            
             HomeCardURL(
               image: 'assets/images/prayer.jpg',
               text: '',
               url: 'https://www.antiochorlando.com/prayer-room',
-              height: MediaQuery.of(context).size.height / 4,
-              width: MediaQuery.of(context).size.width /1.4,
               fitStyle: BoxFit.cover,
             )
           ],

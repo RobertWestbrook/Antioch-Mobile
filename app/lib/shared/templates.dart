@@ -90,23 +90,6 @@ class HomeButtonArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return NestedScrollView(
-    //   scrollDirection: Axis.horizontal,
-    //   headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-    //     return <Widget>[
-    //       SliverAppBar(
-    //         floating: false,
-    //           title: Text(title,
-    //               textScaleFactor: 2,
-    //               textAlign: TextAlign.end,
-    //               ),
-    //         backgroundColor: Color.fromRGBO(30, 30, 30, 0),
-    //         pinned: true,
-    //         forceElevated: innerBoxIsScrolled,
-    //       ),
-    //     ];
-    //   },
-    //   body: 
     return Column(
       children: [
         Padding(
@@ -148,25 +131,23 @@ class HomeButtonArea extends StatelessWidget {
 
 //__________________Cards_______________________________//
 
-class HomeCardURL extends StatelessWidget {
+  //Todo:
+    //Create a SpotCard Template for the hightlighted card of eac section. 
+class SpotCard extends StatelessWidget {
   final image;
   final text;
   final double textSize;
   final url;
-  final height;
-  final width;
   final fitStyle;
   final align;
 
-  HomeCardURL(
+  SpotCard(
     {this.image,
     this.text,
     this.textSize = 3,
     this.url,
-    this.height,
-    this.width,
     this.fitStyle = BoxFit.fitWidth,
-    this.align = Alignment.bottomCenter});
+    this.align = Alignment.center});
 
   @override
   Widget build(BuildContext context) {
@@ -177,8 +158,8 @@ class HomeCardURL extends StatelessWidget {
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-            height: height,
-            width: width,
+            height: MediaQuery.of(context).size.height /2.5,
+            width: MediaQuery.of(context).size.width ,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
@@ -214,9 +195,74 @@ class HomeCardURL extends StatelessWidget {
   }
 }
 
+
+class HomeCardURL extends StatelessWidget {
+  final image;
+  final text;
+  final double textSize;
+  final url;
+  final fitStyle;
+  final align;
+
+  HomeCardURL(
+    {this.image,
+    this.text,
+    this.textSize = 2,
+    this.url,
+    this.fitStyle = BoxFit.fitWidth,
+    this.align = Alignment.center});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      InkWell(
+          onTap: () {
+            launchURL(url);
+          },
+          child: Container(
+            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            height: MediaQuery.of(context).size.height /5,
+            width: MediaQuery.of(context).size.width /2,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                  colorFilter:
+                      ColorFilter.mode(Colors.grey, BlendMode.softLight),
+                  fit: fitStyle,
+                  image: AssetImage(image)),
+            ),
+            child: Align(
+                alignment: align,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    text,
+                    textScaleFactor: textSize,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      shadows: <Shadow>[
+                        Shadow(
+                            offset: Offset(-5.0, 5.0),
+                            blurRadius: 10.0,
+                            color: Colors.blueGrey[800]),
+                        Shadow(
+                            offset: Offset(-5.0, 5.0),
+                            blurRadius: 200.0,
+                            color: Colors.blueGrey[400]),
+                      ],
+                    ),
+                  ),
+                )),
+          )),
+    ]);
+  }
+}
+
+
 class HomeCardNat extends StatelessWidget {
   final image;
   final text;
+  final double textSize;
   final route;
   final height;
   final width;
@@ -225,6 +271,7 @@ class HomeCardNat extends StatelessWidget {
   HomeCardNat(
       {this.image,
       this.text,
+      this.textSize = 1.8,
       this.route,
       this.height,
       this.width,
@@ -240,8 +287,8 @@ class HomeCardNat extends StatelessWidget {
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-            height: height,
-            width: width,
+            height: MediaQuery.of(context).size.height /5,
+            width: MediaQuery.of(context).size.width /2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
@@ -332,6 +379,7 @@ class CardPopUp extends StatelessWidget {
           ]));
   }
 }
+
 
 class PopUpListTile extends ListTile{
   final body;

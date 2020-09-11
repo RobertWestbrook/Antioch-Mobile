@@ -8,29 +8,25 @@ class Jesus extends StatelessWidget {
     return HomeButtonArea(
       title: 'Jesus',
       image: 'assets/images/cross.png',
-      spot: HomeCardURL(
+      spot: SpotCard(
               image: 'assets/images/Worship.jpg',
               text: 'Live',
               url: 'https://www.youtube.com/embed/live_stream?channel=UCwiIoDEhcoiugRExj98vBWg',
-              height: MediaQuery.of(context).size.height /2.5,
-              width: MediaQuery.of(context).size.width,
-              fitStyle: BoxFit.cover),
+              fitStyle: BoxFit.cover,
+              align: Alignment.bottomLeft,),
       child: Row(
         children: [
           HomeCardURL(
             image: 'assets/images/Sermon.jpg',
             text: 'Sermons',
             url: 'https://www.antiochorlando.com/sermons',
-            height: MediaQuery.of(context).size.height /4,
-            width: MediaQuery.of(context).size.width /1.5,
             fitStyle: BoxFit.cover,
+            align: Alignment.center,
           ),
           HomeCardURL(
             image: 'assets/images/prayer.jpg',
             text: '',
             url: 'https://www.antiochorlando.com/prayer-room',
-            height: MediaQuery.of(context).size.height /4,
-            width: MediaQuery.of(context).size.width /1.5,
             fitStyle: BoxFit.cover
                     )
         ],)
