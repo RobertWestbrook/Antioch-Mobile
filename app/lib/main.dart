@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:Antioch_App/shared/navigation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:io';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,3 +40,31 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+// class MessageHandler extends StatefulWidget {
+//   @override
+//   _MessageHandlerState createState() => _MessageHandlerState();
+// }
+
+// class _MessageHandlerState extends State<MessageHandler> {
+//   final Firestore _db = Firestore.instance;
+//   final FirebaseMessaging _fcm = FirebaseMessaging();
+
+//     @override
+//       void initState() { 
+//         super.initState(
+//           _fcm.configure(
+//             onMessage: (Map<String, dynamic> message) async{
+//               print("onMessage: $message");
+//             }
+//           )
+//         );
+//       }
+
+//     @override
+//     Widget build(BuildContext context) {
+//       return null;
+
+//     }
+
+// }

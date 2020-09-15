@@ -401,7 +401,8 @@ class PopUpListTile extends ListTile{
 
 launchURL(url) async {
   if (await canLaunch(url)) {
-    await launch(url);
+    await launch(url, forceWebView: true);
+    
   } else {
     throw 'Could not launch $url';
   }
